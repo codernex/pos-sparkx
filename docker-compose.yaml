@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+  apps:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+      - "9000:9000"
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    working_dir: /apps
+    command: ["pnpm", "dev"]
+
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: app
+      MYSQL_DATABASE: app
+    restart: always
+    volumes:
+      - mysqlData:/var/lib/mysql
+volumes:
+  mysqlData:
+    driver: local

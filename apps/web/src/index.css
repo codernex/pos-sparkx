@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('./fonts/CenturyGothic.ttf');
+}
+
+@layer components {
+    .app__input {
+        height: 36px;
+        width: 100%;
+        padding-left: 5px;
+    }
+}
+
+* {
+    font-family: 'Century Gothic', sans-serif;
+}
+
+:root{
+    --color-dark:'#051831';
+    --color-light:'#d1e4fd';
+    --color-primary:'#1878f3'
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+.required__excel {
+    margin: 10px 0 0 10px;
+}
+
+.required__excel li {
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+
+.invoice-table .ant-table-tbody {
+    padding: 5px !important;
+}
+
+.invoice-table .ant-table-content > table > thead > tr > th {
+    padding: 5px !important;
+}
+
+.invoice-table .ant-table-tbody > tr > td {
+    padding: 5px !important;
+}
+
+
+.confirm__modal--heading {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+
+}
+
+.confirm__modal--btn {
+    font-size: 16px;
+    width: 100px;
+    padding: 5px 0;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.confirm__modal--btn.cancel {
+    background: red;
+}
+
+.confirm__modal--btn.continue {
+    background: #00bb11;
+}
+
+
+.barcode__item {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 2px;
+}
+
+.barcode__item p {
+    font-size: 11px;
+    line-height: 11px;
+}
+
+.ant-btn {
+    color: black;
+}
+
+.customer__table {
+    width: 100%;
+    font-size:16px;
+    text-align: center;
+}
+
+.customer__table th, .customer__table td, .customer__table tr {
+    border: 1px solid #000;
+    width: fit-content;
+}
+.mom__sales-table{
+    width: 100%;
+    font-size:16px;
+    text-align: center;
+}
+.mom__sales-table th, .mom__sales-table td, .mom__sales-table tr{
+    border: 1px solid #000;
+    width: fit-content;
+}
+
+.daily__sales-table{
+    width: 100%;
+    font-size:13px;
+    text-align: center;
+}
+.daily__sales-table th, .daily__sales-table td, .daily__sales-table tr{
+    padding: 0 10px;
+    border: 1px solid #000;
+    width: fit-content;
+
+}
+.report__info{
+    margin-bottom: 10px;
+    text-transform: uppercase;
+
+}
+.report__info h1{
+    font-size: 22px;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+.report__info h2{
+    font-size: 16px;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+.btn__active{
+    background: #007aff;
+    color: white;
+    transition: all ease-in-out 0.3s;
+}
+
+.btn__active:hover{
+    background: #fff;
+    color: black;
+    border: 1px solid #000;
+}
+
+.btn__common{
+    background: #007aff;
+    color: white;
+    transition: all ease-in-out 0.3s;
+    width: 140px;
+    padding: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in-out 0.3s;
+}
+
+.btn__common:hover{
+    background-color: #84b7fa;
+    border: 1px solid #000;
+}
+
+.common__table{
+    width: 100%;
+    font-size:13px;
+    text-align: center;
+}
+.common__table th, .common__table td, .common__table tr{
+    padding: 0;
+    border: 1px solid #000;
+    width: fit-content;
+}
+
+.report__btn{
+    width: 120px;
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.report__btn:hover{
+    background-color:#007aff;
+    color: #FFFFFF;
+}
+
+
+.center__loading {
+    height:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color
+    : rgba(0,0,0,0.9);
+    border-radius: 10px;
+}
+.wave {
+    width: 5px;
+    height: 100px;
+    background: linear-gradient(45deg, cyan, #fff);
+    margin: 10px;
+    animation: wave 1s linear infinite;
+    border-radius: 20px;
+}
+.wave:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.wave:nth-child(3) {
+    animation-delay: 0.2s;
+}
+.wave:nth-child(4) {
+    animation-delay: 0.3s;
+}
+.wave:nth-child(5) {
+    animation-delay: 0.4s;
+}
+.wave:nth-child(6) {
+    animation-delay: 0.5s;
+}
+.wave:nth-child(7) {
+    animation-delay: 0.6s;
+}
+.wave:nth-child(8) {
+    animation-delay: 0.7s;
+}
+.wave:nth-child(9) {
+    animation-delay: 0.8s;
+}
+.wave:nth-child(10) {
+    animation-delay: 0.9s;
+}
+
+@keyframes wave {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+.card{
+    width: 100%;
+    min-width: 200px;
+    box-shadow:5px 5px 5px rgba(0,0,0,0.1) ;
+    background-color: #fff;
+    border-radius: 5px 10px 5px 10px;
+    padding: 10px 20px;
+}
+.card__title{
+    font-size: 20px;
+    font-family: 'Inter','sans-serif';
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.card__subtitle{
+    font-size: 16px;
+    font-family: 'Inter','sans-serif';
+    font-weight: 600;
+}
+
+.ant-table-thead.ant-table-cell {
+                                       background-color: green;
+                                   }
+
+.print__footer{
+    margin-top: 10px;
+    text-align: left;
+}
+.print__footer h2{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: 'Inter', 'sans-serif';
+    font-weight: 600;
+
+}
+
+.invoice__table{
+    width: 100%;
+    border-spacing: 0px;
+    border-width: 1px;
+    border-collapse: separate;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+}
+.invoice__table tr{
+    width: 100%;
+}
+
+.invoice__table thead{
+    border-top-left-radius: 5px;
+    background: rgba(221, 221, 221, 0.28);
+}
+
+.invoice__table th,.invoice__table td{
+    text-align: center;
+    border: 1px solid rgba(5, 5, 5, 0.06);
+
+}
+.invoice__table  tr{
+    border: 1px solid #000 !important;
+}
+.invoice__table th{
+    font-size: 10px;
+}
+.invoice__table td{
+    font-size: 10px;
+}
+
+
+input:disabled{
+    background: #dcdcdc;
+}
+th,
+td{
+    padding: 0 10px;
+}
+
+.return__table{
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid;
+}
+
+.return__table table,.return__table th,.return__table td{
+   border: 1px solid;
+}
+.return__table td>tr>td{
+    border: none;
+    padding: 0;
+}
