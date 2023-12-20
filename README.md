@@ -1,19 +1,23 @@
 <!--
-  Title: File Sure Task Management Assignment
-  Description: A platform where user can create a team to balance workload by deviding tasks into users
+  Title: Point of sale solution
+  Description: A point of sale solutions application
 
-Keywords: React, Typescipt, Express, Turborepo,Mono Repo, PNPM, Template, Boilerplate, Scaffolding
+Keywords: React, Typescipt, Express, Point Of Sale, POS
   Author: codernex
   -->
+
+## Point Of Sale Solution
+
+#### Using By Sparkx Fashion Limited
 
 ## To Run Locally
 
 #### Clone This Repo
 
 ```bash
-git clone https://github.com/codernex/FileSure-Task-Management.git
+git clone https://github.com/codernex/pos-sparkx.git
 
-cd FileSure-Task-Management
+cd pos-sparkx
 
 ```
 
@@ -32,3 +36,7 @@ pnpm install
 ```
 
 #### You are good to go
+
+## NOTE
+
+While the functionalities of this project are tailored and designed around company-specific features, it might not directly apply to everyone's needs. Nevertheless, this served as my very first full-stack project. I welcome any assistance in identifying potential bugs or addressing any deviations from coding standards.
