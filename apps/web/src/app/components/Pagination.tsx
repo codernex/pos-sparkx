@@ -1,5 +1,5 @@
-import { Pagination } from "antd";
-import React from "react";
+import { Pagination } from 'antd';
+import React from 'react';
 
 interface PaginationProps {
   currentPage: number;
@@ -12,13 +12,13 @@ const PaginationPage: React.FC<PaginationProps> = ({
   total,
   pageSize,
   onChange,
-  currentPage,
+  currentPage
 }) => (
   <div
     className={`
     w-full flex justify-end py-6
 
-    ${total < 50 ? "hidden" : ""}
+    ${total < 50 ? 'hidden' : ''}
     `}
   >
     <Pagination

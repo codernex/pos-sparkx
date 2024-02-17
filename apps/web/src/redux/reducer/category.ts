@@ -1,6 +1,6 @@
-import { Reducer } from "@reduxjs/toolkit";
-import { CREATE_CATEGORY_SUCCESS, FETCH_CATEGORY_SUCCESS } from "../constant";
-import { CatActionType, ICatState } from "../types";
+import { Reducer } from '@reduxjs/toolkit';
+import { CREATE_CATEGORY_SUCCESS, FETCH_CATEGORY_SUCCESS } from '../constant';
+import { CatActionType, ICatState } from '../types';
 const category: Reducer<ICatState, CatActionType> = function (
   state = { isLoading: false, categories: [] },
   action
@@ -14,7 +14,7 @@ const category: Reducer<ICatState, CatActionType> = function (
       return {
         ...state,
         categories: [...state.categories, action.payload],
-        isLoading: false,
+        isLoading: false
       };
     }
 

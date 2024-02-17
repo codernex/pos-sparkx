@@ -13,7 +13,7 @@ import { ApiError, CreateFN, ProductGroup } from "../types";
 export const getProductGroup = () => async (dispatch: AppDispatch) => {
   dispatch({ type: FETCH_PRODUCT_GROUP_ERR });
   api
-    .get("/product/group")
+    .get('/product/group')
     .then((res: { data: ProductGroup }) => {
       dispatch({ type: FETCH_PRODUCT_GROUP_SUCCESS, payload: res.data });
     })
@@ -26,9 +26,9 @@ export const createProductGroup: CreateFN<ProductGroup> =
   (data, reset) => async (dispatch: AppDispatch) => {
     dispatch({ type: ADD_PRODUCT_GROUP_LOADING });
     api
-      .post("/product/group", data)
+      .post('/product/group', data)
       .then((res: { data: ProductGroup }) => {
-        successToast("Product Group successfully created");
+        successToast('Product Group successfully created');
         dispatch({ type: ADD_PRODUCT_GROUP_SUCCESS, payload: res.data });
         reset();
       })

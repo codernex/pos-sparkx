@@ -1,13 +1,13 @@
-import { Reducer } from "@reduxjs/toolkit";
+import { Reducer } from '@reduxjs/toolkit';
 import {
   ADD_PRODUCT_GROUP_ERR,
   ADD_PRODUCT_GROUP_LOADING,
   ADD_PRODUCT_GROUP_SUCCESS,
   FETCH_PRODUCT_GROUP_ERR,
   FETCH_PRODUCT_GROUP_LOADING,
-  FETCH_PRODUCT_GROUP_SUCCESS,
-} from "../constant";
-import { IProductGState, ProductGroupAction } from "../types";
+  FETCH_PRODUCT_GROUP_SUCCESS
+} from '../constant';
+import { IProductGState, ProductGroupAction } from '../types';
 
 const productGroup: Reducer<IProductGState, ProductGroupAction> = (
   state = { isLoading: false, productGroup: [] },
@@ -21,7 +21,7 @@ const productGroup: Reducer<IProductGState, ProductGroupAction> = (
       return {
         ...state,
         isLoading: false,
-        productGroup: [...state.productGroup, action.payload],
+        productGroup: [...state.productGroup, action.payload]
       };
     }
 

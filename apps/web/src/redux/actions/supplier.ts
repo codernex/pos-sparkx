@@ -62,17 +62,16 @@ export const updateSupplier =
       });
   };
 
-export const deleteSupplier =
-  (id: number) => async (dispatch: Dispatch<SupplierActionType>) => {
-    dispatch({ type: "DELETE_SUPPLIER_LOADING" });
-    api
-      .delete(`/supplier/${id}`)
-      .then((res) => {
-        dispatch({ type: "DELETE_SUPPLIER_SUCCESS", payload: res.data });
-        successToast("Supplier Deleted");
-      })
-      .catch((err) => {
-        dispatch({ type: "DELETE_SUPPLIER_ERR" });
-        rejectedToast(err);
-      });
-  };
+
+export const deleteSupplier =(id:number)=>async (dispatch: Dispatch<SupplierActionType>)=>{
+    dispatch({type:'DELETE_SUPPLIER_LOADING'})
+    api.delete(`/supplier/${id}`)
+        .then(res=>{
+            dispatch({type:'DELETE_SUPPLIER_SUCCESS',payload:res.data})
+            successToast('Supplier Deleted');
+        })
+        .catch(err=>{
+            dispatch({type:'DELETE_SUPPLIER_ERR'})
+            rejectedToast(err)
+        })
+}

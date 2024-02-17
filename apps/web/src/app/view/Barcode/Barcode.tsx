@@ -1,14 +1,14 @@
-import { Button as AntButton, Typography } from "antd";
+import { Typography } from "antd";
 import { Field, Form, Formik } from "formik";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import BarcodeGeneratorComponent from "react-barcode";
 import { FaPrint } from "react-icons/fa";
 import { useReactToPrint } from "react-to-print";
+import { toast } from "react-toastify";
 import { printBarcode } from "../../../redux/actions/barcode";
 import { useAppDispatch, useTypedSelector } from "../../../redux/store";
-import { Loader, Button } from "../../components";
+import { Button, Loader } from "../../components";
 import { useSettingContext } from "../../context/SettingProver";
-import { toast } from "react-toastify";
 
 const Barcode = () => {
   const dispatch = useAppDispatch();
@@ -27,7 +27,6 @@ const Barcode = () => {
       itemNodes.push(i);
     }
   }
-  console.log(defaultBarcodeSettings);
 
   const LotForm = () => {
     return (

@@ -1,6 +1,6 @@
-import { AppDispatch } from "../store";
-import api from "../../api";
-import { rejectedToast, successToast } from "../../app/utils/toaster";
+import { AppDispatch } from '../store';
+import api from '../../api';
+import { rejectedToast, successToast } from '../../app/utils/toaster';
 import {
   ADD_CUSTOMER_ERR,
   ADD_CUSTOMER_LOADING,
@@ -13,11 +13,11 @@ import {
   REMOVE_CUSTOMER_SUCCESS,
   UPDATE_CUSTOMER_ERR,
   UPDATE_CUSTOMER_LOADING,
-  UPDATE_CUSTOMER_SUCCESS,
-} from "../constant";
-import { AxiosError } from "axios";
-import { ApiError } from "../types";
-import React from "react";
+  UPDATE_CUSTOMER_SUCCESS
+} from '../constant';
+import { AxiosError } from 'axios';
+import { ApiError } from '../types';
+import React from 'react';
 
 export const createCustomer =
   (
@@ -27,9 +27,9 @@ export const createCustomer =
   async (dispatch: AppDispatch) => {
     dispatch({ type: ADD_CUSTOMER_LOADING });
     api
-      .post("/customer", data)
-      .then((res) => {
-        successToast("Customer created successfully");
+      .post('/customer', data)
+      .then(res => {
+        successToast('Customer created successfully');
         setCustomerPhone && setCustomerPhone(res.data?.customerPhone);
         dispatch({ type: ADD_CUSTOMER_SUCCESS, payload: res.data });
       })
@@ -42,8 +42,8 @@ export const createCustomer =
 export const fetchCustomer = () => async (dispatch: AppDispatch) => {
   dispatch({ type: FETCH_CUSTOMER_LOADING });
   api
-    .get("/customer")
-    .then((res) => {
+    .get('/customer')
+    .then(res => {
       dispatch({ type: FETCH_CUSTOMER_SUCCESS, payload: res.data });
     })
     .catch((err: AxiosError<ApiError>) => {
@@ -56,8 +56,8 @@ export const updateCustomer =
     dispatch({ type: UPDATE_CUSTOMER_LOADING });
     api
       .patch(`/customer/${data.id}`, data)
-      .then((res) => {
-        successToast("Customer Updated");
+      .then(res => {
+        successToast('Customer Updated');
         dispatch({ type: UPDATE_CUSTOMER_SUCCESS, payload: res.data });
       })
       .catch((err: AxiosError<ApiError>) => {
@@ -69,8 +69,8 @@ export const deleteCustomer = (id: number) => async (dispatch: AppDispatch) => {
   dispatch({ type: REMOVE_CUSTOMER_LOADING });
   api
     .delete(`/customer/${id}`)
-    .then((res) => {
-      successToast("Customer Deleted");
+    .then(res => {
+      successToast('Customer Deleted');
       dispatch({ type: REMOVE_CUSTOMER_SUCCESS, payload: res.data });
     })
     .catch((err: AxiosError<ApiError>) => {

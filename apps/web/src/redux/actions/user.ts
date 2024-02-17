@@ -28,42 +28,31 @@ export const createUser = (data: any) => async (dispatch: AppDispatch) => {
 };
 
 export const fetchUsers = () => async (dispatch: AppDispatch) => {
-  dispatch({ type: FETCH_USER_LOADING });
-  api
-    .get("/user")
-    .then((res) => {
-      dispatch({ type: FETCH_USER_SUCCESS, payload: res.data });
+    dispatch({type: FETCH_USER_LOADING})
+    api.get('/user').then(res => {
+        dispatch({type: FETCH_USER_SUCCESS, payload: res.data})
+    }).catch((err: AxiosError<ApiError>) => {
+        dispatch({type: FETCH_USER_ERR, payload: err.response?.data.message})
     })
-    .catch((err: AxiosError<ApiError>) => {
-      dispatch({ type: FETCH_USER_ERR, payload: err.response?.data.message });
-    });
-};
-export const updateUser =
-  (id: number, data: any) => async (dispatch: Dispatch<UserActionType>) => {
-    dispatch({ type: "UPDATE_USER_LOADING" });
-    api
-      .patch(`/user/${id}`, data)
-      .then((res) => {
-        successToast("User updated successfully");
-        dispatch({ type: "UPDATE_USER_SUCCESS", payload: res.data });
-      })
-      .catch((err) => {
-        rejectedToast(err);
-        dispatch({ type: "UPDATE_USER_ERR" });
-      });
-  };
+}
+export const updateUser=(id:number,data:any)=>async (dispatch: Dispatch<UserActionType>) => {
+    dispatch({type:'UPDATE_USER_LOADING'})
+    api.patch(`/user/${id}`,data).then(res=>{
+        successToast('User updated successfully')
+        dispatch({type:'UPDATE_USER_SUCCESS', payload: res.data})
+    }).catch(err=>{
+        rejectedToast(err)
+        dispatch({type:'UPDATE_USER_ERR'})
+    })
+}
 
-export const deleteUser =
-  (id: number) => async (dispatch: Dispatch<UserActionType>) => {
-    dispatch({ type: "DELETE_USER_LOADING" });
-    api
-      .delete(`/user/${id}`)
-      .then((res) => {
-        successToast("User Deleted successfully");
-        dispatch({ type: "DELETE_USER_SUCCESS", payload: res.data });
-      })
-      .catch((err) => {
-        rejectedToast(err);
-        dispatch({ type: "DELETE_USER_ERR" });
-      });
-  };
+export const deleteUser=(id:number)=>async (dispatch: Dispatch<UserActionType>) => {
+    dispatch({type:'DELETE_USER_LOADING'})
+    api.delete(`/user/${id}`).then(res=>{
+        successToast('User Deleted successfully')
+        dispatch({type:'DELETE_USER_SUCCESS', payload: res.data})
+    }).catch(err=>{
+        rejectedToast(err)
+        dispatch({type:'DELETE_USER_ERR'})
+    })
+}

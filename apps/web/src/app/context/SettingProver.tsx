@@ -48,7 +48,9 @@ export default function SettingProvider({
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    Promise.all([dispatch(fetchBarcode()), dispatch(getDefaultBarcode())]);
+    if (user()) {
+      Promise.all([dispatch(fetchBarcode()), dispatch(getDefaultBarcode())]);
+    }
   }, [dispatch]);
   useEffect(() => {
     const loggedInUser = user() as IUser;

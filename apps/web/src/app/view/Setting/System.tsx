@@ -1,9 +1,14 @@
-import React from "react";
+import React from 'react'
 
-interface SystemProps {}
+interface SystemProps {
+}
 
 const System: React.FC<SystemProps> = () => {
-  return <div></div>;
-};
+    return (
+        <div>
+             
+        </div>
+    )
+}
 
-export default System;
+export default System

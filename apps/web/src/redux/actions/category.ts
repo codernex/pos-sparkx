@@ -11,16 +11,16 @@ import { Category, CreateFN } from "../types";
 export const createCat: CreateFN<Category> =
   (data, reset, navigate) => async (dispatch: AppDispatch) => {
     api
-      .post("/product/category", data)
+      .post('/product/category', data)
       .then((res: { data: Category }) => {
         dispatch({
           type: CREATE_CATEGORY_SUCCESS,
-          payload: res.data,
+          payload: res.data
         });
-        successToast("Category Created Successfully");
+        successToast('Category Created Successfully');
         reset();
       })
-      .catch((err) => {
+      .catch(err => {
         if (err.response.data.message) {
           rejectedToast(err.response.data.message);
         } else {
@@ -31,11 +31,11 @@ export const createCat: CreateFN<Category> =
 
 export const getCat = () => async (dispatch: AppDispatch) => {
   api
-    .get("/product/category")
+    .get('/product/category')
     .then((res: { data: Category[] }) => {
       dispatch({ type: FETCH_CATEGORY_SUCCESS, payload: res.data });
     })
-    .catch((err) => {
-      dispatch({ type: FETCH_CATEGORY_ERR });
+    .catch(err => {
+        dispatch({type:FETCH_CATEGORY_ERR})
     });
 };

@@ -54,12 +54,14 @@ import { useSettingContext } from "./app/context/SettingProver";
 import DamagedProducts from "./app/view/Product/DamagedProduct";
 import BestProducts from "./app/view/Product/BestProducts";
 import BestCustomer from "./app/view/Customer/BestCustomer";
+import { useAuthUser } from "react-auth-kit";
 interface DispatchActions {
   (): void;
 }
 
 function App() {
   const dispatch = useAppDispatch();
+  const isUser = useAuthUser();
 
   const dispatchActions: DispatchActions[] = useMemo(() => {
     return [
@@ -76,7 +78,9 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatchActions.forEach((action) => action());
+    if (isUser()) {
+      dispatchActions.forEach((action) => action());
+    }
   }, [dispatchActions]);
   const { mode } = useSettingContext();
 

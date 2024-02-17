@@ -1,28 +1,28 @@
-import { Modal, Table } from "antd";
-import React, { useRef, useState } from "react";
-import { useAppDispatch, useTypedSelector } from "../../../redux/store";
+import { Modal, Table } from 'antd';
+import React, { useRef, useState } from 'react';
+import { useAppDispatch, useTypedSelector } from '../../../redux/store';
 import {
   Button,
   CommonInput,
   Loader,
   Pagination,
-  PrintAble,
-} from "../../components";
-import { useSettingContext } from "../../context/SettingProver";
-import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+  PrintAble
+} from '../../components';
+import { useSettingContext } from '../../context/SettingProver';
+import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
 import {
   deleteShowroom,
-  updateShowroom,
-} from "../../../redux/actions/showroom";
-import { Form, Formik } from "formik";
-import ConfirmationModal from "../../components/ConfirmationModal";
-import { handleExcel, handlePrint } from "../../utils/helper";
+  updateShowroom
+} from '../../../redux/actions/showroom';
+import { Form, Formik } from 'formik';
+import ConfirmationModal from '../../components/ConfirmationModal';
+import { handleExcel, handlePrint } from '../../utils/helper';
 
 const Showroom = () => {
   const cRef = useRef(null);
 
   const dispatch = useAppDispatch();
-  const { showroom, isLoading } = useTypedSelector((state) => state.showroom);
+  const { showroom, isLoading } = useTypedSelector(state => state.showroom);
   const { page, pageSize, setPage, setPageSize } = useSettingContext();
   const [editAble, setEditAble] = useState<IShowroom | null>(null);
   const [openModal, setOpenModal] = useState(false);
@@ -34,17 +34,17 @@ const Showroom = () => {
   }
   return (
     <PrintAble
-      title={"Showrooms"}
+      title={'Showrooms'}
       handlePrint={() => {
         handlePrint(
           showroom,
           [
-            { field: "showroomName", displayName: "Name" },
-            { field: "showroomCode", displayName: "Code" },
-            { field: "showroomMobile", displayName: "Mobile" },
-            { field: "showroomAddress", displayName: "Address" },
+            { field: 'showroomName', displayName: 'Name' },
+            { field: 'showroomCode', displayName: 'Code' },
+            { field: 'showroomMobile', displayName: 'Mobile' },
+            { field: 'showroomAddress', displayName: 'Address' }
           ],
-          "Showroom"
+          'Showroom'
         );
       }}
       handleExcel={() => handleExcel(showroom)}
@@ -59,11 +59,11 @@ const Showroom = () => {
       />
       <Table
         dataSource={showroom}
-        id="showroomData"
+        id='showroomData'
         ref={cRef}
-        rowKey={(obj) => obj.showroomCode}
+        rowKey={obj => obj.showroomCode}
         rowClassName={
-          "dark:bg-slate-700 dark:text-white dark:hover:text-primaryColor-900"
+          'dark:bg-slate-700 dark:text-white dark:hover:text-primaryColor-900'
         }
         pagination={{
           current: page,
@@ -74,46 +74,46 @@ const Showroom = () => {
             setPageSize(size);
           },
           style: {
-            display: "none",
-          },
+            display: 'none'
+          }
         }}
       >
         <Table.Column
-          title="Showroom Code"
-          dataIndex={"showroomCode"}
-          key="showroomCode"
+          title='Showroom Code'
+          dataIndex={'showroomCode'}
+          key='showroomCode'
         />
         <Table.Column
-          title="Showroom Name"
-          dataIndex={"showroomName"}
-          key="showroomName"
+          title='Showroom Name'
+          dataIndex={'showroomName'}
+          key='showroomName'
         />
         <Table.Column
-          title="Showroom Mobile"
-          dataIndex={"showroomMobile"}
-          key="showroomMobile"
+          title='Showroom Mobile'
+          dataIndex={'showroomMobile'}
+          key='showroomMobile'
         />
         <Table.Column
-          title="Showroom Adress"
-          dataIndex={"showroomAddress"}
-          key="showroomAddress"
+          title='Showroom Adress'
+          dataIndex={'showroomAddress'}
+          key='showroomAddress'
         />
 
         <Table.Column
-          title="Showroom Actions"
-          dataIndex={"id"}
+          title='Showroom Actions'
+          dataIndex={'id'}
           render={(_: any, record: IShowroom) => {
             return (
-              <div className={"flex gap-x-2 text-xl"}>
+              <div className={'flex gap-x-2 text-xl'}>
                 <AiOutlineEdit
-                  cursor={"pointer"}
+                  cursor={'pointer'}
                   onClick={() => {
                     setOpenModal(true);
                     setEditAble(record);
                   }}
                 />
                 <AiOutlineDelete
-                  cursor={"pointer"}
+                  cursor={'pointer'}
                   onClick={() => {
                     setItemToDelete(record.id);
                     setConfirmationModal(true);
@@ -137,7 +137,7 @@ const Showroom = () => {
           <Formik
             initialValues={editAble}
             enableReinitialize={true}
-            onSubmit={async (values) => {
+            onSubmit={async values => {
               await dispatch(updateShowroom(values));
               setOpenModal(false);
               setEditAble(null);
@@ -147,17 +147,17 @@ const Showroom = () => {
           >
             {() => (
               <Form>
-                <CommonInput label={"Showroom Code"} name={"showroomCode"} />
-                <CommonInput label={"Showroom Name"} name={"showroomName"} />
+                <CommonInput label={'Showroom Code'} name={'showroomCode'} />
+                <CommonInput label={'Showroom Name'} name={'showroomName'} />
                 <CommonInput
-                  label={"Showroom Mobile"}
-                  name={"showroomMobile"}
+                  label={'Showroom Mobile'}
+                  name={'showroomMobile'}
                 />
                 <CommonInput
-                  label={"Showroom Address"}
-                  name={"showroomAddress"}
+                  label={'Showroom Address'}
+                  name={'showroomAddress'}
                 />
-                <Button type={"submit"} loading={isLoading}>
+                <Button type={'submit'} loading={isLoading}>
                   Update
                 </Button>
               </Form>

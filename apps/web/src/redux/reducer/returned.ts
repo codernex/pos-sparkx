@@ -5,38 +5,34 @@ interface ReturnedState {
   isLoading: boolean;
 }
 
-interface FetchReturnedLoading {
-  type: "FETCH_RETURNED_LOADING";
-}
-interface FetchReturnedSuccess {
-  type: "FETCH_RETURNED_SUCCESS";
-  payload: IReturned[];
-}
+interface FetchReturnedLoading{
+    type:'FETCH_RETURNED_LOADING'
 
-interface FetchReturnedErr {
-  type: "FETCH_RETURNED_ERR";
+}
+interface FetchReturnedSuccess{
+    type:'FETCH_RETURNED_SUCCESS'
+    payload:IReturned[]
 }
 
-export type ReturnedActionType =
-  | FetchReturnedLoading
-  | FetchReturnedSuccess
-  | FetchReturnedErr;
-const returned: Reducer<ReturnedState, ReturnedActionType> = (
-  state = { returned: [], isLoading: false },
-  action
-) => {
-  switch (action.type) {
-    case "FETCH_RETURNED_LOADING":
-      return { ...state, isLoading: true };
+interface FetchReturnedErr{
+    type:'FETCH_RETURNED_ERR'
+}
 
-    case "FETCH_RETURNED_SUCCESS":
-      return { ...state, isLoading: false, returned: action.payload };
+export type ReturnedActionType=FetchReturnedLoading|FetchReturnedSuccess|FetchReturnedErr
+const returned:Reducer<ReturnedState,ReturnedActionType>=(state={returned:[],isLoading:false}, action)=>{
+    
+    switch (action.type) {
+      case "FETCH_RETURNED_LOADING":
+        return { ...state, isLoading: true };
 
-    case "FETCH_RETURNED_ERR":
-      return { ...state, isLoading: false };
-    default:
-      return state;
-  }
-};
+      case "FETCH_RETURNED_SUCCESS":
+        return { ...state, isLoading: false, returned: action.payload };
 
-export default returned;
+      case "FETCH_RETURNED_ERR":
+          return {...state,isLoading: false}
+      default:
+        return state;
+    }
+}
+
+export default returned

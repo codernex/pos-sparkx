@@ -3,7 +3,7 @@ import { Field, Form, Formik } from "formik";
 import { useState } from "react";
 import { useIsAuthenticated, useSignIn } from "react-auth-kit";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router";
 import api from "../../../api";
 import { ApiError } from "../../../redux/types";
 import { rejectedToast } from "../../utils/toaster";

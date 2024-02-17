@@ -1,6 +1,6 @@
-import { AxiosError } from "axios";
-import { toast } from "react-toastify";
-import { ApiError } from "../../redux/types";
+import { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
+import { ApiError } from '../../redux/types';
 export function successToast(message: string) {
   toast.success(message);
 }

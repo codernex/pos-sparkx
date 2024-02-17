@@ -1,4 +1,4 @@
-import { Reducer } from "@reduxjs/toolkit";
+import { Reducer } from '@reduxjs/toolkit';
 
 interface PurchaseState {
   purchases: Purchase[];
@@ -6,16 +6,16 @@ interface PurchaseState {
 }
 
 interface FetchPurchaseLoading {
-  type: "FETCH_PURCHASE_LOADING";
+  type: 'FETCH_PURCHASE_LOADING';
 }
 
 interface FetchPurchaseSuccess {
-  type: "FETCH_PURCHASE_SUCCESS";
+  type: 'FETCH_PURCHASE_SUCCESS';
   payload: Purchase[];
 }
 
 interface FetchPurchaseErr {
-  type: "FETCH_PURCHASE_ERR";
+  type: 'FETCH_PURCHASE_ERR';
 }
 
 export type PurchaseActionType =
@@ -28,13 +28,13 @@ const purchase: Reducer<PurchaseState, PurchaseActionType> = (
   action
 ) => {
   switch (action.type) {
-    case "FETCH_PURCHASE_LOADING":
+    case 'FETCH_PURCHASE_LOADING':
       return { ...state, isLoading: true };
 
-    case "FETCH_PURCHASE_SUCCESS":
+    case 'FETCH_PURCHASE_SUCCESS':
       return { ...state, isLoading: false, purchases: action.payload };
 
-    case "FETCH_PURCHASE_ERR":
+    case 'FETCH_PURCHASE_ERR':
       return { ...state, isLoading: false };
 
     default:

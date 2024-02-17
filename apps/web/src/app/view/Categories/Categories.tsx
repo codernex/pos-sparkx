@@ -10,71 +10,65 @@ import { useSettingContext } from "../../context/SettingProver";
 import { handlePrint } from "../../utils/helper";
 
 const Categories = () => {
-  const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getCat());
-  }, [dispatch]);
+    useEffect(() => {
+        dispatch(getCat());
+    }, [dispatch]);
 
-  const { categories, isLoading } = useTypedSelector((state) => state.category);
-  const { page, pageSize, setPage, setPageSize } = useSettingContext();
-  if (isLoading) {
-    return <Loader />;
-  }
+    const {categories, isLoading} = useTypedSelector(state => state.category);
+    const {page, pageSize, setPage, setPageSize} = useSettingContext();
+    if (isLoading) {
+        return <Loader/>;
+    }
 
-  return (
-    <div>
-      <PrintAble
-        title={"Categories"}
-        handlePrint={() => handlePrint(categories, ["categoryName"])}
-        showExcel={false}
-        showPDF={false}
-      >
-        <Table
-          dataSource={categories}
-          rowKey={(object) => object.categoryName}
-          pagination={{
-            current: page,
-            total: categories.length,
-            pageSize: pageSize,
-            onChange: (page, size) => {
-              setPage(page);
-              setPageSize(size);
-            },
-            style: {
-              display: "none",
-            },
-          }}
-          id="categories-table"
-          rowClassName={
-            "dark:bg-slate-700 dark:text-white dark:hover:text-primaryColor-900"
-          }
-        >
-          <Table.Column
-            title="Category Name"
-            dataIndex={"categoryName"}
-            key="categoryName"
-          />
-          <Table.Column
-            title="Actions"
-            dataIndex={"id"}
-            render={(value, record: Category) => {
-              return <Link to={`${record.id}`}>Edit</Link>;
-            }}
-          />
-        </Table>
-        <Pagination
-          currentPage={page}
-          total={categories.length}
-          onChange={(page, size) => {
-            setPage(page);
-            setPageSize(size);
-          }}
-          pageSize={pageSize}
-        />
-      </PrintAble>
-    </div>
-  );
+    return (
+        <div>
+            <PrintAble title={'Categories'} handlePrint={() => handlePrint(categories, ['categoryName'])}
+                       showExcel={false} showPDF={false}>
+                <Table
+                    dataSource={categories}
+                    rowKey={object => object.categoryName}
+                    pagination={{
+                        current: page,
+                        total: categories.length,
+                        pageSize: pageSize,
+                        onChange: (page, size) => {
+                            setPage(page);
+                            setPageSize(size);
+                        },
+                        style: {
+                            display: 'none'
+                        }
+                    }}
+                    id='categories-table'
+                    rowClassName={'dark:bg-slate-700 dark:text-white dark:hover:text-primaryColor-900'}
+                >
+                    <Table.Column
+                        title='Category Name'
+                        dataIndex={'categoryName'}
+                        key='categoryName'
+                    />
+                    <Table.Column
+                        title='Actions'
+                        dataIndex={'id'}
+                        render={(value, record: Category) => {
+                            return <Link to={`${record.id}`}>Edit</Link>;
+                        }}
+                    />
+                </Table>
+                <Pagination
+                    currentPage={page}
+                    total={categories.length}
+                    onChange={(page, size) => {
+                        setPage(page);
+                        setPageSize(size);
+                    }}
+                    pageSize={pageSize}
+                />
+            </PrintAble>
+        </div>
+    );
 };
 
 export default Categories;

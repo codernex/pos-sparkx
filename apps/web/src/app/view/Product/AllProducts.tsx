@@ -244,7 +244,7 @@ const AllProducts = () => {
       <Table
         dataSource={dataTable}
         id="productData"
-        ref={tableComponent as any}
+        ref={tableComponent}
         rowKey={(obj) => obj.itemCode}
         loading={isLoading}
         pagination={{
