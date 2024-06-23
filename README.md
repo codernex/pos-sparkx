@@ -8,7 +8,7 @@ Keywords: React, Typescipt, Express, Point Of Sale, POS
 
 ## Point Of Sale Solution
 
-#### Using By Sparkx Fashion Limited
+#### Using By [Sparkx Fashion Limited](https://www.facebook.com/sparkxlifestyle/)
 
 ## To Run Locally
 
